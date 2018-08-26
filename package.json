@@ -5,6 +5,7 @@
   "dependencies": {
     "antd-mobile": "^2.2.0-beta.1",
     "autoprefixer": "7.1.6",
+    "axios": "^0.18.0",
     "babel-core": "6.26.0",
     "babel-eslint": "7.2.3",
     "babel-jest": "20.0.3",
@@ -13,6 +14,7 @@
     "babel-runtime": "6.26.0",
     "case-sensitive-paths-webpack-plugin": "2.1.1",
     "chalk": "1.1.3",
+    "cookie-parser": "^1.4.3",
     "css-loader": "0.28.7",
     "dotenv": "4.0.0",
     "dotenv-expand": "4.2.0",
@@ -38,7 +40,10 @@
     "react": "^16.4.1",
     "react-dev-utils": "^5.0.2",
     "react-dom": "^16.4.1",
+    "react-redux": "^5.0.7",
+    "react-router-dom": "^4.3.1",
     "redux": "^4.0.0",
+    "redux-thunk": "^2.3.0",
     "resolve": "1.6.0",
     "style-loader": "0.19.0",
     "sw-precache-webpack-plugin": "0.11.4",
@@ -98,13 +103,16 @@
           "libraryName": "antd-mobile",
           "style": "css"
         }
-      ]
+      ],
+      "transform-decorators-legacy"
     ]
   },
   "eslintConfig": {
     "extends": "react-app"
   },
+  "proxy": "http://localhost:9093",
   "devDependencies": {
+    "antd-mobile": "^2.2.0-beta.1",
     "babel-plugin-import": "^1.8.0"
   }
 }

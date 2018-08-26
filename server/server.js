@@ -10,13 +10,14 @@ mongoose.connection.on("connected", function () {
 //类似于mysql的表 mongo里有文档、字段的概念
 const User = mongoose.model("user", new mongoose.Schema({
     user: {type: String, require: true},
-    age: {type: Number, require: true}
+    age: {type: Number, require: true},
+    isAuth: {type: Boolean, require: true}
 }))
 
-// //新增数据
+// // //新增数据
 // User.create({
-//     user:'xiaohua',
-//     age:19
+//     user:'xiaoming',
+//     age:20
 // }, function(err, doc){
 //     if(!err){
 //         console.log(doc)
@@ -31,7 +32,7 @@ const User = mongoose.model("user", new mongoose.Schema({
 // })
 
 // //更新数据
-// User.update({"user":"xiaoming"}, {"$set":{age:26}}, function(err, doc){
+// User.update({"user":"xiaoming"}, {"$set":{isAuth:true}}, function(err, doc){
 //     console.log(doc)
 // })
 
@@ -39,14 +40,20 @@ const User = mongoose.model("user", new mongoose.Schema({
 //新建app
 const app = express()
 
+app.use(express.static("build"));
+
 app.get("/", function (req, res) {
     res.send("<h1>hello world 111</h1>")
 
 })
 
+
 //条件查询
 app.get("/data", function (req, res) {
     User.findOne({"user": "xiaoming"}, function (err, doc) {
+        // setTimeout(() => {
+        //     return res.json(doc)
+        // }, 2000)
         return res.json(doc)
     })
     //res.json({"name":"imooc", type:"IT"})
