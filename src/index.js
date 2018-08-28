@@ -10,11 +10,13 @@ import {
     Switch
 } from 'react-router-dom'
 
-
+//组件
 import Login from "./container/login/login"
 import Register from "./container/register/register"
 import AuthRoute from "./component/authroute/authroute"
+import BossInfo from "./container/bossinfo/bossinfo"
 
+//redux
 import reducers from './reducer'
 import "./config"
 import "./index.css"
@@ -34,7 +36,7 @@ ReactDom.render(
             <div>
                 <AuthRoute></AuthRoute>
                 <Switch>
-                    <Route path="/boss" component={Boss}></Route>
+                    <Route path="/bossinfo" component={BossInfo}></Route>
                     <Route path="/login" component={Login}></Route>
                     <Route path="/register" component={Register}></Route>
                 </Switch>
