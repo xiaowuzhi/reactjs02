@@ -16,15 +16,13 @@ import {update} from "../../redux/user.redux"
     state => state.user,
     {update}
 )
-class BossInfo extends React.Component {
+class GeniusInfo extends React.Component {
     constructor(props) {
         super(props)
         //this.handleChange = this.handleChange.bind(this)
         this.state = {
-            title:'',
-            desc:'',
-            company:'',
-            money:''
+            title: '',
+            desc: '',
         }
     }
 
@@ -40,7 +38,7 @@ class BossInfo extends React.Component {
         return (
             <div>
                 {redirect1 && redirect1 !== path ? <Redirect to={redirect1}></Redirect> : null}
-                <NavBar mode="dark">BOOSS完善信息页</NavBar>
+                <NavBar mode="dark">牛人完善信息页</NavBar>
                 <AvatarSelector
                     // selectAvatar={this.selectAvatar}
                     selectAvatar={(imgname) => {
@@ -48,18 +46,14 @@ class BossInfo extends React.Component {
                             avatar: imgname
                         })
                     }}
+
                 ></AvatarSelector>
                 {/*<InputItem onChange={function(v){this.handleChange("user",v)}.bind(this)}>*/}
                 <InputItem onChange={(v) => this.handleChange("title", v)}>
-                    招聘职位
+                    求职岗位
                 </InputItem>
-                <InputItem onChange={(v) => this.handleChange("company", v)}>
-                    公司名称
-                </InputItem>
-                <InputItem onChange={(v) => this.handleChange("money", v)}>
-                    职位薪资
-                </InputItem>
-                <List renderHeader={() => <div style={{"fontSize": "17px", "color": "#000"}}>职位要求</div>}>
+
+                <List renderHeader={() => <div style={{"fontSize": "17px", "color": "#000"}}>个人简介</div>}>
                     <TextareaItem
                         onChange={(v) => this.handleChange("desc", v)}
                         rows={3}
@@ -82,4 +76,4 @@ class BossInfo extends React.Component {
     }
 }
 
-export default BossInfo
+export default GeniusInfo

@@ -1,8 +1,12 @@
 import React from "react"
-
-import {Grid, List} from 'antd-mobile'
+import {Grid, List, Result} from 'antd-mobile'
+import PropTypes from "prop-types"
 
 class AvatarSelector extends React.Component {
+    static propTypes = {
+        selectAvatar: PropTypes.func.isRequired,
+    }
+
     constructor(props) {
         super(props)
         this.state = {}
@@ -17,13 +21,24 @@ class AvatarSelector extends React.Component {
                 icon: require(`../img/${v}.png`),
                 text: v
             }))
-        const gridHeader = this.state.icon ? (<div>
-            <span>已选择头像</span>
-            <img style={{width: 20}} src={this.state.icon} alt=""/>
-        </div>) : (<div>请选择头像</div>)
+        let isxuanimg = "请选择头像"
+        const myImg = src => <img src={src} className="spe am-icon am-icon-md" alt=""/>;
+        let img1
+        if (this.state.icon) {
+            img1 = myImg(this.state.icon)
+            isxuanimg = <div className="spexia02">已选择: {this.state.text}</div>
+        } else {
+            img1 = ""
+            isxuanimg = <div className="spexia01">请选择头像</div>
+        }
         return (
-            <div>
-                <List renderHeader={() => gridHeader}>
+            <div className="result-example">
+                <List>
+                    <Result
+                        img={img1}
+                        title={isxuanimg}
+                        //message={<div>998.00元 <del>1098元</del></div>}
+                    />
                     <Grid
                         data={avatarList}
                         columnNum={5}

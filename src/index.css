@@ -1,4 +1,54 @@
+
 .error-msg {
     color: #f50;
-    padding-left: 15px;
+    padding-left: 10px;
+    padding-top: 10px;
 }
+
+.am-tab-bar {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: auto;
+}
+
+.fixd-header .am-navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.page-content {
+    padding: 45px 5px;
+}
+
+/*结果页 component/avatar-selector/avatar-selector.js*/
+.result-example .am-result {
+    padding-top: 6px;
+    padding-bottom: 6px;
+}
+
+.result-example .am-result .am-result-pic {
+    width: 30px;
+    height: 30px;
+}
+
+.result-example .spe {
+    width: 30px;
+    height: 30px;
+}
+
+.result-example .spexia01 {
+    color: red;
+    font-size: 12px;
+    padding-top: 2px;
+    padding-bottom: 3px;
+}
+
+.result-example .spexia02 {
+    color: #ccc;
+    font-size: 12px;
+    padding-top: 2px;
+    padding-bottom: 3px;
+}
+
