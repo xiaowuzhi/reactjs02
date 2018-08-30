@@ -5,50 +5,58 @@
     padding-top: 10px;
 }
 
-.am-tab-bar {
+/*Dashboard 组件*/
+.component-dashboard .am-tab-bar {
     position: fixed;
     bottom: 0;
     width: 100%;
     height: auto;
 }
 
-.fixd-header .am-navbar {
+.component-dashboard .fixd-header.am-navbar{
     position: fixed;
     top: 0;
+    z-index: 100;
     width: 100%;
 }
 
-.page-content {
+.component-dashboard .page-content {
     padding: 45px 5px;
 }
 
-/*结果页 component/avatar-selector/avatar-selector.js*/
-.result-example .am-result {
+/*AvatarSelector 组件 结果页 component/avatar-selector/avatar-selector.js*/
+.component-avatar-selector .am-result {
     padding-top: 6px;
     padding-bottom: 6px;
 }
 
-.result-example .am-result .am-result-pic {
+.component-avatar-selector .am-result .am-result-pic {
     width: 30px;
     height: 30px;
 }
 
-.result-example .spe {
+.component-avatar-selector .spe {
     width: 30px;
     height: 30px;
 }
 
-.result-example .spexia01 {
+.component-avatar-selector .spexia01 {
     color: red;
     font-size: 12px;
     padding-top: 2px;
     padding-bottom: 3px;
 }
 
-.result-example .spexia02 {
+.component-avatar-selector .spexia02 {
     color: #ccc;
     font-size: 12px;
     padding-top: 2px;
     padding-bottom: 3px;
+}
+
+/*User组件 component/user/user*/
+.component-user .spe {
+    width: 50px;
+    height: 50px;
 }
 

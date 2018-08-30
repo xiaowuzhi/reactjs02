@@ -1,23 +1,15 @@
 import React from "react"
-import {Route} from "react-router-dom"
+import {Switch, Route} from "react-router-dom"
 import {connect} from "react-redux"
 import {NavBar} from "antd-mobile"
 import NavLinkBar from "../../component/navlink/navlink"
+import Boss from "../../component/boss/boss"
+import Genius from "../genius/genius"
+import User from "../../component/user/user"
 
-function Boss() {
-    return <h2>Boss首页</h2>
-}
-
-function Genius() {
-    return <h2>牛人首页</h2>
-}
 
 function Msg() {
     return <h2>消息列表页面</h2>
-}
-
-function User() {
-    return <h2>个人中心</h2>
 }
 
 
@@ -25,6 +17,11 @@ function User() {
     state => state
 )
 class Dashboard extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {}
+    }
+
     render() {
         const {pathname} = this.props.location
         const user = this.props.user
@@ -39,7 +36,7 @@ class Dashboard extends React.Component {
             },
             {
                 path: "/genius",
-                text: "boss",
+                text: "BOSS",
                 icon: "boss",
                 title: "BOSS列表",
                 component: Genius,
@@ -60,11 +57,18 @@ class Dashboard extends React.Component {
                 component: User
             }
         ]
-
+        let oneNavList = navList.find(v => v.path == pathname)
         return (
-            <div>
-                <NavBar className='fixd-header' mode="dard">{navList.find(v=>v.path == pathname).title}</NavBar>
-                <h2>content</h2>
+            <div className="component-dashboard">
+                <NavBar className="fixd-header" mode="dard">{oneNavList === undefined ? "" : oneNavList.title}</NavBar>
+
+                <div style={{marginTop:"45px",marginBottom:"78px"}}>
+                    <Switch>
+                        {navList.map(v => (
+                            <Route key={v.path} path={v.path} component={v.component}></Route>
+                        ))}
+                    </Switch>
+                </div>
                 {/*<Route path="/boss" component={Boss}></Route>*/}
                 {/*<Route path="/genius" component={Genius}></Route>*/}
                 <NavLinkBar data={navList}></NavLinkBar>

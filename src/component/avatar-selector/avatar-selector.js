@@ -32,7 +32,7 @@ class AvatarSelector extends React.Component {
             isxuanimg = <div className="spexia01">请选择头像</div>
         }
         return (
-            <div className="result-example">
+            <div className="component-avatar-selector">
                 <List>
                     <Result
                         img={img1}

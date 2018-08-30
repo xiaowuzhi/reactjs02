@@ -7,10 +7,8 @@ import {withRouter} from 'react-router-dom'
 @withRouter
 class NavLinkBar extends React.Component {
     constructor(props) {
-        super(props);
-        this.state = {
-            fullScreen: true,
-        };
+        super(props)
+        this.state = {}
     }
 
     static propTypes = {
@@ -19,7 +17,6 @@ class NavLinkBar extends React.Component {
 
 
     render() {
-        console.log(this.state.fullScreen)
         const navList = this.props.data.filter(v => !v.hide)
         const {pathname} = this.props.location
         return (
