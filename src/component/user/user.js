@@ -17,13 +17,13 @@ class User extends React.Component {
 
     logout() {
         const alert = Modal.alert
-
         alert('注销', '确认退出登录吗???', [
             {text: '取消', onPress: () => console.log('cancel')},
             {
                 text: '确认', onPress: () => {
                     browserCookie.erase("userid")
                     this.props.logoutSubmit()
+                    //this.props.history.push("/login")
                 }
             },
         ])
@@ -34,17 +34,17 @@ class User extends React.Component {
 
     render() {
         const props = this.props
-
         const myImg = src => <img src={src} className="spe am-icon am-icon-md" alt=""/>
+
         const Item = List.Item
         const Brief = Item.Brief
+
         return props.user ? (
             <div className="component-user">
-                {(this.props.redirectTo && this.props.redirectTo != "/login") ? <Redirect to={this.props.redirectTo} />:null}
                 <Result
                     img={myImg(require(`../img/${props.avatar}.png`))}
                     title={this.props.user}
-                    message={props.type == "boss" ? props.company : null}
+                    message={props.type === "boss" ? props.company : null}
                 />
 
                 <List renderHeader={() => "简介"}>
@@ -63,7 +63,7 @@ class User extends React.Component {
                 </List>
             </div>
 
-        ) : <Redirect to={props.redirectTo} />
+        ) : <Redirect to={props.redirectTo}/>
     }
 }
 
