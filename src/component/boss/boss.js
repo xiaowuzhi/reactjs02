@@ -1,3 +1,7 @@
+
+
+import 'core-js/es6/map';
+import 'core-js/es6/set';
 import React from "react"
 import {connect} from "react-redux"
 import {getUserList} from "../../redux/chatuser.redux"
