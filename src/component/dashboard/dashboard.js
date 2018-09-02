@@ -6,6 +6,7 @@ import NavLinkBar from "../../component/navlink/navlink"
 import Boss from "../../component/boss/boss"
 import Genius from "../genius/genius"
 import User from "../../component/user/user"
+import {getMsgList, recvMsg} from "../../redux/chat.redux";
 
 
 function Msg() {
@@ -14,12 +15,21 @@ function Msg() {
 
 
 @connect(
-    state => state
+    state => state,
+    {getMsgList, recvMsg}
 )
 class Dashboard extends React.Component {
     constructor(props) {
         super(props)
         this.state = {}
+    }
+
+    componentDidMount() {
+        if(!this.props.chat.chatmsg.length){
+            this.props.getMsgList()
+            this.props.recvMsg()
+        }
+
     }
 
     render() {
@@ -62,7 +72,7 @@ class Dashboard extends React.Component {
             <div className="component-dashboard">
                 <NavBar className="fixd-header" mode="dard">{oneNavList === undefined ? "" : oneNavList.title}</NavBar>
 
-                <div style={{marginTop:"45px",marginBottom:"78px"}}>
+                <div style={{marginTop: "45px", marginBottom: "78px"}}>
                     <Switch>
                         {navList.map(v => (
                             <Route key={v.path} path={v.path} component={v.component}></Route>

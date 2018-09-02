@@ -13,10 +13,10 @@
     height: auto;
 }
 
-.component-dashboard .fixd-header.am-navbar{
+.component-dashboard .fixd-header.am-navbar {
     position: fixed;
     top: 0;
-    z-index: 100;
+    z-index: 10;
     width: 100%;
 }
 
@@ -59,4 +59,30 @@
     width: 50px;
     height: 50px;
 }
+
+/*Chat组件*/
+#chat-page .chat-me .am-list-extra {
+    flex-basis: auto;
+}
+
+#chat-page .chat-me .am-list-content {
+    padding-right: 15px;
+    text-align: right;
+}
+
+.component-chat .stick-footer {
+    z-index: 10;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+
+.component-chat .fixd-header.am-navbar {
+    position: fixed;
+    top: 0;
+    z-index: 10;
+    width: 100%;
+}
+
 
