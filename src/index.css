@@ -70,13 +70,20 @@
     text-align: right;
 }
 
+#chat-page .am-grid-icon {
+    display: none;
+}
+
+#chat-page .am-grid-text {
+    margin-top: 0;
+}
+
 .component-chat .stick-footer {
     z-index: 10;
     position: fixed;
     bottom: 0;
     width: 100%;
 }
-
 
 .component-chat .fixd-header.am-navbar {
     position: fixed;

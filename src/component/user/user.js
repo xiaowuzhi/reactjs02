@@ -23,7 +23,7 @@ class User extends React.Component {
                 text: '确认', onPress: () => {
                     browserCookie.erase("userid")
                     this.props.logoutSubmit()
-                    //this.props.history.push("/login")
+                    this.props.history.push("/login")
                 }
             },
         ])
@@ -63,7 +63,7 @@ class User extends React.Component {
                 </List>
             </div>
 
-        ) : <Redirect to={props.redirectTo}/>
+        ) : null
     }
 }
 

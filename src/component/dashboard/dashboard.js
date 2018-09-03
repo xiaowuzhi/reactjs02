@@ -6,12 +6,8 @@ import NavLinkBar from "../../component/navlink/navlink"
 import Boss from "../../component/boss/boss"
 import Genius from "../genius/genius"
 import User from "../../component/user/user"
+import Msg from "../../component/msg/msg"
 import {getMsgList, recvMsg} from "../../redux/chat.redux";
-
-
-function Msg() {
-    return <h2>消息列表页面</h2>
-}
 
 
 @connect(
@@ -67,7 +63,7 @@ class Dashboard extends React.Component {
                 component: User
             }
         ]
-        let oneNavList = navList.find(v => v.path === pathname)
+        let oneNavList = navList.find(v => v.path == pathname)
         return (
             <div className="component-dashboard">
                 <NavBar className="fixd-header" mode="dard">{oneNavList === undefined ? "" : oneNavList.title}</NavBar>

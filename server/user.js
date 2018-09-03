@@ -9,6 +9,9 @@ const _filter = {"pwd": 0, "__v": 0}
 // Chat.remove({}, function (e, d) {
 //
 // })
+// User.remove({}, function (e, d) {
+//
+// })
 
 Router.get("/list", function (req, res) {
     let {type} = req.query
@@ -37,6 +40,23 @@ Router.get("/getmsglist", function (req, res) {
     })
     //{"$or":[{from:user, to: user}]}
 
+})
+
+Router.post("/readmsg", function (req, res) {
+    const userid = req.cookies.userid
+    const {from} = req.body
+    Chat.update(
+        {from: from, to: userid},
+        {"$set": {read: true}},
+        {"multi": true},
+        function (err, doc) {
+            //console.log(doc)
+            if (!err) {
+                return res.json({code: 0, num:doc.nModified})
+            }
+            return res.json({code: 1, msg: "修改失败"})
+
+        })
 })
 
 Router.post("/update", function (req, res) {
