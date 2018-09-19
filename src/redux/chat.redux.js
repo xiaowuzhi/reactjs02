@@ -38,7 +38,8 @@ export function chat(state = initState, action) {
                         v.read = true
                     }
                     return v
-                }), unread: state.unread - num
+                }),
+                unread: state.unread - num < 0 ? 0 : state.unread - num
             }
         default:
             return state
