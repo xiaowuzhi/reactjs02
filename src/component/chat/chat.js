@@ -2,8 +2,9 @@ import React from "react"
 import {List, InputItem, NavBar, Icon, Grid} from "antd-mobile"
 //import io from "socket.io-client"
 import {connect} from "react-redux"
-import {getMsgList, sendMsg, recvMsg, readMsg} from "../../redux/chat.redux";
-import {getChatId} from "../../util";
+import {getMsgList, sendMsg, recvMsg, readMsg} from "../../redux/chat.redux"
+import {getChatId} from "../../util"
+import QueueAnim from 'rc-queue-anim'
 
 //let socket
 
@@ -15,7 +16,9 @@ class Chat extends React.Component {
     constructor(props) {
         super(props)
         this.state = {text: "", msg: []}
+        this.handleSubmit = this.handleSubmit.bind(this)
     }
+
 
     componentDidMount() {
         if (!this.props.chat.chatmsg.length) {
@@ -44,9 +47,8 @@ class Chat extends React.Component {
 
         const from = this.props.user._id
         const to = this.props.match.params.user
-        const msg = this.state.text.replace(/(^\s*)|(\s*$)/g,"")
-        if(msg){
-            console.log(msg)
+        const msg = this.state.text.replace(/(^\s*)|(\s*$)/g, "")
+        if (msg) {
             this.props.sendMsg({from, to, msg})
         }
         this.setState({
@@ -62,17 +64,21 @@ class Chat extends React.Component {
             .map(v => ({text: v}))
 
 
-        const Item = List.Item;
-        const Brief = Item.Brief;
+        const Item = List.Item
+        //const Brief = Item.Brief;
         const userid = this.props.match.params.user
-        const users = this.props.chat.users
+        let users = this.props.chat.users
+        if (!users[userid]) {
+            this.props.getMsgList()
+            users = this.props.chat.users
+        }
+
         if (!users[userid]) {
             return null
         }
 
         const chatid = getChatId(userid, this.props.user._id)
         const chatmsgs = this.props.chat.chatmsg.filter(v => v.chatid == chatid)
-
         return (
             <div className="component-chat" id="chat-page">
                 <NavBar
@@ -87,24 +93,26 @@ class Chat extends React.Component {
                 </NavBar>
 
                 <div style={{marginTop: "45px", marginBottom: "78px"}}>
-                    {chatmsgs.map(v => {
-                        const avatar = require(`../img/${users[v.from].avatar}.png`)
-                        return v.from == userid ? (
-                            <List key={v._id}>
-                                <Item
-                                    thumb={avatar}
-                                >{v.content}</Item>
-                            </List>
+                    <QueueAnim type="scale" delay={100}>
+                        {chatmsgs.map(v => {
+                            const avatar = require(`../img/${users[v.from].avatar}.png`)
+                            return v.from == userid ? (
+                                <List key={v._id}>
+                                    <Item
+                                        thumb={avatar}
+                                    >{v.content}</Item>
+                                </List>
 
-                        ) : (
-                            <List key={v._id}>
-                                <Item
-                                    extra={<img src={avatar}/>}
-                                    className="chat-me"
-                                >{v.content}</Item>
-                            </List>
-                        )
-                    })}
+                            ) : (
+                                <List key={v._id}>
+                                    <Item
+                                        extra={<img alt="头像" src={avatar}/>}
+                                        className="chat-me"
+                                    >{v.content}</Item>
+                                </List>
+                            )
+                        })}
+                    </QueueAnim>
                 </div>
 
 
@@ -127,7 +135,7 @@ class Chat extends React.Component {
                                             this.fixCarousel()
                                         }}
                                     >😊</span>
-                                    <span onClick={() => this.handleSubmit()}>发送</span>
+                                    <span onClick={this.handleSubmit}>发送</span>
                                 </div>
                             }
                         ></InputItem>

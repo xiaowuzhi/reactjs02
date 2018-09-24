@@ -12,7 +12,7 @@ class Msg extends React.Component {
 
     render() {
         const Item = List.Item
-        const Brief = Item.Brief;
+        const Brief = Item.Brief
         const userid = this.props.user._id
         const userinfo = this.props.chat.users
 

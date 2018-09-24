@@ -102,7 +102,7 @@ export function register({user, pwd, repeatpwd, type}) {
         axios.post("/user/register", {user, pwd, type})
             .then(res => {
                 if (res.status === 200 && res.data.code === 0) {
-                    dispatch(authSuccess({user, pwd, type}))
+                    dispatch(authSuccess({user, pwd, type, _id: res.data.data._id}))
                     //dispatch(registerSuccess(res.data.data))
                 } else {
                     dispatch(errorMsg(res.data.msg))

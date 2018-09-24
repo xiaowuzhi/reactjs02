@@ -1,5 +1,6 @@
 import React from "react"
-import {Switch, Route} from "react-router-dom"
+//import {Switch, Route} from "react-router-dom"
+import {Route} from "react-router-dom"
 import {connect} from "react-redux"
 import {NavBar} from "antd-mobile"
 import NavLinkBar from "../../component/navlink/navlink"
@@ -7,7 +8,8 @@ import Boss from "../../component/boss/boss"
 import Genius from "../genius/genius"
 import User from "../../component/user/user"
 import Msg from "../../component/msg/msg"
-import {getMsgList, recvMsg} from "../../redux/chat.redux";
+import {getMsgList, recvMsg} from "../../redux/chat.redux"
+import QueueAnim from 'rc-queue-anim'
 
 
 @connect(
@@ -21,7 +23,7 @@ class Dashboard extends React.Component {
     }
 
     componentDidMount() {
-        if(!this.props.chat.chatmsg.length){
+        if (!this.props.chat.chatmsg.length) {
             this.props.getMsgList()
             this.props.recvMsg()
         }
@@ -68,13 +70,26 @@ class Dashboard extends React.Component {
             <div className="component-dashboard">
                 <NavBar className="fixd-header" mode="dard">{oneNavList === undefined ? "" : oneNavList.title}</NavBar>
 
+
                 <div style={{marginTop: "45px", marginBottom: "78px"}}>
-                    <Switch>
-                        {navList.map(v => (
-                            <Route key={v.path} path={v.path} component={v.component}></Route>
-                        ))}
-                    </Switch>
+                    <QueueAnim type="scaleX" duration={600}>
+                        {
+                            oneNavList === undefined ? null :
+                                <Route key={oneNavList.path} path={oneNavList.path}
+                                       component={oneNavList.component}></Route>
+
+                        }
+                    </QueueAnim>
                 </div>
+
+
+                {/*<div style={{marginTop: "45px", marginBottom: "78px"}}>*/}
+                {/*<Switch>*/}
+                {/*{navList.map(v => (*/}
+                {/*<Route key={v.path} path={v.path} component={v.component}></Route>*/}
+                {/*))}*/}
+                {/*</Switch>*/}
+                {/*</div>*/}
                 <NavLinkBar data={navList}></NavLinkBar>
             </div>
         )

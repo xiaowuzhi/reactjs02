@@ -11,7 +11,7 @@ import {
 import {connect} from "react-redux"
 import {register} from "../../redux/user.redux"
 import {Redirect} from "react-router-dom"
-import imoocForm from "../../component/imooc-form/imooc-form";
+import imoocForm from "../../component/imooc-form/imooc-form"
 
 
 @connect(

@@ -22,7 +22,7 @@ class AvatarSelector extends React.Component {
                 text: v
             }))
         let isxuanimg = "请选择头像"
-        const myImg = src => <img src={src} className="spe am-icon am-icon-md" alt=""/>;
+        const myImg = src => <img src={src} className="spe am-icon am-icon-md" alt=""/>
         let img1
         if (this.state.icon) {
             img1 = myImg(this.state.icon)

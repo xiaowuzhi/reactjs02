@@ -3,7 +3,7 @@ import {connect} from "react-redux"
 import {Result, List, WhiteSpace, Modal} from "antd-mobile"
 import browserCookie from "browser-cookies"
 import {logoutSubmit} from "../../redux/user.redux"
-import {Redirect} from "react-router-dom"
+// import {Redirect} from "react-router-dom"
 
 @connect(
     state => state.user,
